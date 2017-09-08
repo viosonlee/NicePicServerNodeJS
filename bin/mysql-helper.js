@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
 })
 connection.connect()
 
-exports.saveOne = function saveOne(data) {
+exports.saveOne = function (data) {
     var sql = 'INSERT INTO nice_pic(id,title,url,img) VALUES(0,?,?,?)'
     var params = [data.title, data.link, data.image]
     connection.query(sql, params, function (error, result) {
@@ -17,4 +17,8 @@ exports.saveOne = function saveOne(data) {
         }
         console.log('insert success')
     })
+}
+
+exports.getUserInfo = function () {
+    var sql = 'SELECT FROM user_info'
 }
