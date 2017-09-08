@@ -19,6 +19,14 @@ exports.saveOne = function (data) {
     })
 }
 
-exports.getUserInfo = function () {
-    var sql = 'SELECT FROM user_info'
+exports.getUserInfo = function (name) {
+    var sql = 'SELECT *FROM user_info WHERE name=\'' + name + '\''
+    console.log('mysql:' + sql)
+    connection.query(sql, function (error, result) {
+        if (error) {
+            console.log('查询失败:' + result + error.stack + '\n')
+            return
+        }
+        console.log('查询成功：' + JSON.stringify(result))
+    })
 }
